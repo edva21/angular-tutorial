@@ -1,7 +1,12 @@
 <ul class="">
   <li *ngFor="let product of products">
     <input [(ngModel)]=product.name/>
-    <div>Name:{{product.name | uppercase }}</div>
+    <div (click)="onSelectProduct(product)">Name:{{product.name | uppercase }}</div>
     <div>Price:{{product.price}}</div>
   </li>
 </ul>
+
+<div *ngIf="selectedProduct">
+  <h2>Selected Product:</h2>  
+    {{selectedProduct.name}}
+</div>

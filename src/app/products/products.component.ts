@@ -24,10 +24,14 @@ export class ProductsComponent implements OnInit {
       price:2000
     },
   ]
+  selectedProduct :Product
   constructor() { }
 
+  onSelectProduct(product){
+    this.selectedProduct = product
+  }
   ngOnInit() {
-    console.log('This is the OnInit lifecycle');
+
   }
 
 }
