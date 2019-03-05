@@ -7,11 +7,23 @@ import {Product} from '../Product';
   styleUrls: ['./products.component.css']
 })
 export class ProductsComponent implements OnInit {
-  product: Product={
-    id:1,
-    name:'iPhone',
-    price:650
-  }
+  products: Product[]=[
+    {
+      id:1,
+      name:'iPhone',
+      price:650
+    },
+    {
+      id:2,
+      name:'MacBook Pro',
+      price:2500
+    },
+    {
+      id:2,
+      name:'iPad',
+      price:2000
+    },
+  ]
   constructor() { }
 
   ngOnInit() {
