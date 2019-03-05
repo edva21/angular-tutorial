@@ -19,13 +19,11 @@ const products = [
   },
 ];
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class ProductService {
 
-  constructor() { }
-  getProduct(): Product[] {
+  constructor() {}
+  getProducts(): Product[] {
     return products;
   }
 }
