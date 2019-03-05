@@ -1,7 +1,7 @@
 <ul class="">
   <li
   class="product"
-  [class.selected]="selectedProduct && selectedProduct.name === product.name" 
+  [class.selected]="selectedProduct && selectedProduct.name === product.name"
   *ngFor="let product of products"
   >
     <input [(ngModel)]=product.name/>
@@ -10,7 +10,4 @@
   </li>
 </ul>
 
-<div *ngIf="selectedProduct">
-  <h2>Selected Product:</h2>
-    {{selectedProduct.name}}
-</div>
+<app-product-detail [product]="selectedProduct"></app-product-detail>
