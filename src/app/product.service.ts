@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import {Product} from './product'
+import {Observable} from 'rxjs/Observable'
+import {of} from 'rxjs/observable/of'
 
 const products = [
   {
@@ -27,5 +29,8 @@ export class ProductService {
   constructor() { }
   getProducts(): Product[] {
     return products;
+  }
+  getProducts2(): Observable<Product[]> {
+    return of(products);
   }
 }
