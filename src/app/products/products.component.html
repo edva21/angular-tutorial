@@ -1,3 +1,8 @@
+<div>
+  <input #nameInput placeholder="Name"/>
+  <input #priceInput placeholder="Price"/>
+  <button (click)="add(nameInput.value,priceInput.value); nameInput.value='';priceInput.value=''">Add</button>
+</div>
 <ul class="">
   <li
   class="product"
@@ -7,6 +12,7 @@
     <input [(ngModel)]=product.name/>
     <div (click)="onSelectProduct(product)">Name:{{product.name | uppercase }}</div>
     <div>Price:{{product.price}}</div>
+    <button (click) ="save(product)">Save</button>
   </li>
 </ul>
 

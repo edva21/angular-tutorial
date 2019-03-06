@@ -5,6 +5,9 @@ import {Observable} from 'rxjs/Observable'
 import {of} from 'rxjs/observable/of'
 import {catchError,map,tap} from 'rxjs/operators';
 
+const httpOptions = {
+  headers: new HttpHeaders({'Content-Type': 'applcation/json'})
+};
 const products = [
   {
     id:1,
@@ -34,7 +37,7 @@ export class ProductService {
 
   private handleError<T> (operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
-      console.error(error,'Operation: ${operation}');
+      console.error(error,`Operation: ${operation}`);
       return of(result as T);
     }
 
@@ -60,6 +63,20 @@ export class ProductService {
     return this.http.get<Product>(url).pipe(
       tap(_=> console.log(`Fetched product of id  ${id}!`)),
       catchError(this.handleError<Product>(`getHero id=${id}`))
+    );
+  }
+  updateProduct(product: Product): Observable<any>{
+    return this.http.put(this.productsUrl, product, httpOptions).
+      pipe(
+        tap(_=> console.log(`Updated product of id ${product.id}!`)),
+        catchError(this.handleError<any>('updateProduct'))
+    );
+  }
+  addProduct(product: Product): Observable<Product>{
+    return this.http.post<Product>(this.productsUrl, product, httpOptions).
+      pipe(
+        tap(_=> console.log(`Added product with id ${product.id}!`)),
+        catchError(this.handleError<Product>('addProduct'))
     );
   }
 }
