@@ -20,7 +20,7 @@ const products = [
     price:2500
   },
   {
-    id:2,
+    id:3,
     name:'iPad',
     price:2000
   },
@@ -78,5 +78,14 @@ export class ProductService {
         tap(_=> console.log(`Added product with id ${product.id}!`)),
         catchError(this.handleError<Product>('addProduct'))
     );
+  }
+  deleteProduct(productId: number): Observable<Product> {
+    const url= `${this.productsUrl}/${productId}`;
+
+    return this.http.delete<Product>(url, httpOptions)
+      .pipe(
+        tap(_=> console.log(`Deleted product of id ${productId}!`)),
+        catchError(this.handleError<Product>('deleteProduct'))
+      )
   }
 }

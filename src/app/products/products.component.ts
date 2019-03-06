@@ -44,4 +44,9 @@ export class ProductsComponent implements OnInit {
         this.products.push(product);
       });
   }
+  ddelete(productId: number): void{
+    this.products = this.products.filter(product => product.id !== productId);
+
+    this.productService.deleteProduct(productId).subscribe();
+  }
 }
