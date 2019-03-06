@@ -6,7 +6,9 @@ import { AppComponent } from './app.component';
 import { ProductsComponent } from './products/products.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import {ProductService} from './product.service';
-
+import { HttpClientModule } from '@angular/common/http';
+import {HttpClientInMemoryWebApiModule} from 'angular-in-memory-web-api';
+import {InMemoryDataService} from './in-memory-data.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -15,7 +17,11 @@ import {ProductService} from './product.service';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    HttpClientInMemoryWebApiModule.forRoot(
+      InMemoryDataService,{dataEncapsulation:false}
+    )
   ],
   providers: [ProductService],
   bootstrap: [AppComponent]
